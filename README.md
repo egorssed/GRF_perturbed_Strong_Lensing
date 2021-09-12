@@ -2,7 +2,7 @@
 
 LCDM cosmological model predicts more galaxy satellites that we observe. One of the ways to find the missed satellites (if they exist) is rather than relying on an object's radiation, to use a physical effect that is determined by the object's mass. Such an effect is gravitational lensing. The amount of light deflection depends on column density along the line of sight, therefore the effect provides one with an opportunity to detect dark matter haloes, that make up most of the mass, but do not interact with light at all.
 
-<img src="./Research demonstration/Images_Readme/Pert_lensing.png" width="1538" height="739">
+<img src="./Research demonstration/Images_Readme/Pert_lensing.png" width="800" height="384">
 
 The upper row shows the classical lensing setup Source-Lens-Observer on the right and the image that the observer detects on the left.
 There can be not only lensing galaxy M on the line of sight, but additional mass overdensities like galaxy satellites. 
@@ -12,14 +12,14 @@ In this particular work, we consider additional mass that acts as a perturbation
 As we want to describe the potential field with maximal simplicity, the best way is to describe the Amplitude of the field and scale of perturbation. For that case, the most useful field is a Gaussian Random Field.
 You can also reason the choice of a Gaussian from Central Limit Theorem. For example, if we consider many small dark matter haloes around the lens, by treating them as many random variables we can expect that their cumulative potential will be close to the normal distribution.
 
-<img src="./Research demonstration/Images_Readme/GRF.png" width="1200" height="813">
+<img src="./Research demonstration/Images_Readme/GRF.png" width="800" height="542">
 
 Gaussian Random Field (GRF) is defined in the Fourier space by the Power-law spectrum and Phase realization. For our simulation purposes it can be completely defined by three parameters: Amplitude “A” of the Power Spectrum PS (top of the slide), Power slope “β” and a Random seed defining the Phase realization. On the slide, you can see the separate impact of each of the variables.
 
 The explanation for Power slope “β” is “The higher the Beta, the more power at low frequencies. The more power at low frequencies, the greater the size of the perturbations.” So “Big beta means big scale perturbations”.
 On the middle figure, we got a big scale blob for Beta=5 and a small scale net for Beta=2.
 
-<img src="./Research demonstration/Images_Readme/Res_PS.png" width="1593" height="790">
+<img src="./Research demonstration/Images_Readme/Res_PS.png" width="800" height="396">
 
 Let’s say that we have a perturbed lens image “Data”. We expect that the lens can be split into two parts: the smooth part like SIE+Shear, and the perturbation modeled by GRF.
 The core idea is that if we fit the “Data” using the model with only the smooth lens part, then the residuals will reflect the unaccounted perturbation lens part.
@@ -33,7 +33,7 @@ and in the Power Slope of the GRF, represented by the shape of the Residuals Pow
 
 At the same time, the axial distribution of the power spectrum encodes the phase realization of the GRF, which is of no interest to us.
 
-<img src="./Research demonstration/Images_Readme/Idea.png" width="1191" height="305">
+<img src="./Research demonstration/Images_Readme/Idea.png" width="800" height="204">
 
 Basically, that’s the idea of the pipeline.
 
@@ -43,7 +43,7 @@ Then, using 𝜓1 as an approximation of 𝜓0 and GRF with controlled parameter
 
 After all, we compute the Loss function between “Data power spectrum” and “Simulation power spectrum” and estimate how close the simulated GRF is to the true one.
 
-<img src="./Research demonstration/Images_Readme/Optimization_idea.png" width="1546" height="745">
+<img src="./Research demonstration/Images_Readme/Optimization_idea.png" width="800" height="385">
 
 On the top of the figure:
 We can see the pipeline of obtaining the power spectrum for an observed "Data" image. In order to get the “Data power spectrum,” we fit the data, get residuals, mask them and compute axially averaged power spectrum. 
@@ -62,7 +62,7 @@ Only then we can use more phases to converge to the true GRF parameters.
 Third step:
 Compute Loss as an average of the distance from “Data power spectrum” to each of the “Simulated power spectra”. Given the Loss function, we can compute its gradients and hessian with respect to GRF’s A, Beta and optimize these parameters with usual optimization algorithms.  
 
-<img src="./Research demonstration/Images_Readme/Fitting_alg.png" width="1500" height="582">
+<img src="./Research demonstration/Images_Readme/Fitting_alg.png" width="800" height="310">
 
 The figure represents the entire pipeline for getting the Amplitude and Power slope of GRF potential perturbations for an observed strong lensing image.
 
@@ -78,11 +78,11 @@ Using the same loss function estimate the likelihood inside the regions of pertu
 Fourth step:
 Out of likelihood in perturbation limits estimate confidence intervals of GRF's Amplitude and Power slope.
 
-<img src="./Research demonstration/Images_Readme/HS_likelihood.png" width="1181" height="716">
+<img src="./Research demonstration/Images_Readme/HS_likelihood.png" width="800" height="485">
 
 Result likelihoods and GRF parameter estimation for high scale GRF perturbations.
 
-<img src="./Research demonstration/Images_Readme/LS_likelihood.png" width="1100" height="696">
+<img src="./Research demonstration/Images_Readme/LS_likelihood.png" width="800" height="506">
 
 Result likelihoods and GRF parameter estimation for low scale GRF perturbations.
 
